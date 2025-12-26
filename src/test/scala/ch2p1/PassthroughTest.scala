@@ -1,11 +1,11 @@
 package ch2p1
 
 import chisel3._
-import chisel3.simulator.EphemeralSimulator._
+import chisel3.simulator.scalatest.ChiselSim
 import org.scalatest.flatspec.AnyFlatSpec
 import circt.stage.ChiselStage
 
-class PassthroughTest extends AnyFlatSpec {
+class PassthroughTest extends AnyFlatSpec with ChiselSim {
   behavior of "Passthrough"
 
   it should "produce such SystemVerilog" in {
@@ -30,7 +30,7 @@ class PassthroughTest extends AnyFlatSpec {
 }
 
 
-class PassthroughGeneratorTest extends AnyFlatSpec {
+class PassthroughGeneratorTest extends AnyFlatSpec with ChiselSim {
   behavior of "PassthroughGenerator"
 
   it should "pass input directly to output with width = 10" in {
