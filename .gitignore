@@ -8,6 +8,7 @@ test_run_dir/*
 .metals/
 project/*
 !project/build.properties
+!project/plugins.sbt
 
 
 ### XilinxISE template

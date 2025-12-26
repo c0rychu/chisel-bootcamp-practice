@@ -1,8 +1,10 @@
 // See README.md for license details.
 
-ThisBuild / scalaVersion     := "2.13.18"
-ThisBuild / version          := "0.1.0"
-ThisBuild / organization     := "page.gwlab"
+ThisBuild / scalaVersion      := "2.13.18"
+ThisBuild / version           := "0.1.0"
+ThisBuild / organization      := "page.gwlab"
+ThisBuild / semanticdbEnabled := true
+ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 
 val chiselVersion = "7.6.0"
 
@@ -10,8 +12,8 @@ lazy val root = (project in file("."))
   .settings(
     name := "DEMO",
     libraryDependencies ++= Seq(
-      "org.chipsalliance" %% "chisel" % chiselVersion,
-      "org.scalatest" %% "scalatest" % "3.2.19" % "test",
+      "org.chipsalliance" %% "chisel"    % chiselVersion,
+      "org.scalatest"     %% "scalatest" % "3.2.19" % "test"
     ),
     scalacOptions ++= Seq(
       "-language:reflectiveCalls",
@@ -19,6 +21,7 @@ lazy val root = (project in file("."))
       "-feature",
       "-Xcheckinit",
       "-Ymacro-annotations",
+      "-Wunused"
     ),
-    addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full),
+    addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full)
   )
