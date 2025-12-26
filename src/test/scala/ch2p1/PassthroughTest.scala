@@ -37,8 +37,8 @@ class PassthroughGeneratorTest extends AnyFlatSpec {
     simulate(new PassthroughGenerator(width=10)) { dut =>
         dut.io.in.poke(0.U)
         dut.io.out.expect(0.U)
-        dut.io.in.poke((1<<10 - 1).U)
-        dut.io.out.expect((1<<10 - 1).U)
+        dut.io.in.poke(((1<<10) - 1).U)
+        dut.io.out.expect(((1<<10) - 1).U)
     }
   }
 
@@ -46,8 +46,8 @@ class PassthroughGeneratorTest extends AnyFlatSpec {
     simulate(new PassthroughGenerator(width=20)) { dut =>
         dut.io.in.poke(0.U)
         dut.io.out.expect(0.U)
-        dut.io.in.poke((1<<20 - 1).U)
-        dut.io.out.expect((1<<20 - 1).U)
+        dut.io.in.poke(((1<<20) - 1).U)
+        dut.io.out.expect(((1<<20) - 1).U)
     }
   }
 }
