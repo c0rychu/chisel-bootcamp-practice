@@ -3,9 +3,20 @@ package ch2p1
 import chisel3._
 import chisel3.simulator.EphemeralSimulator._
 import org.scalatest.flatspec.AnyFlatSpec
+import circt.stage.ChiselStage
 
 class PassthroughTest extends AnyFlatSpec {
   behavior of "Passthrough"
+
+  it should "produce such SystemVerilog" in {
+    println("\n\n===== SystemVerilog of 'Passthrough' =====\n")
+    println(ChiselStage.emitSystemVerilog(
+        new Passthrough,
+        firtoolOpts = Array("-disable-all-randomization", "-strip-debug-info", "-default-layer-specialization=enable"),
+      ))
+    println("\n===== END =====\n\n")
+  }
+
   it should "pass input directly to output" in {
     simulate(new Passthrough) { dut =>
         dut.io.in.poke(0.U)     // Set our input to value 0
